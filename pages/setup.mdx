@@ -1,0 +1,28 @@
+# Wiki and Setup Guide
+
+1. Clone the project repository using the following command:
+    ```bash
+    git clone https://github.com/JoaoVitorFigueiredo/colareseditora.git && cd colareseditora
+    ```
+
+2. Install project dependencies by running:
+    ```bash
+    npm install
+    ```
+
+3. Install json-server package globally to set up a local JSON database:
+    ```bash
+    npm install -g json-server@0.17.4
+    ```
+
+   **Note:** Ensure that you install version 0.17.4 as newer versions may not support certain functionalities.
+
+4. Start the development server and the local JSON database:
+    ```bash
+    npm start && json-server --watch db.json --port 3030
+    ```
+
+   **Note:** If any of the required ports are already in use, you can change them in the `package.json` file under the `start` script. For example:
+   ```json
+   "start": "PORT=4000 react-scripts start"
+
