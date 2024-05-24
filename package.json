@@ -1,6 +1,6 @@
 {
   "name": "colareseditora-docs",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Colares Editora API DOCS",
   "scripts": {
     "dev": "next dev",
