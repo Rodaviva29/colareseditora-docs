@@ -1,0 +1,71 @@
+import { Callout } from 'nextra/components'
+import { Cards, Card } from 'nextra/components'
+
+# Authentication and JWT
+
+For starters, what is a JWT?
+
+_JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed._ ~ JWT.io.
+
+So... in a pratical way to explain, JWT can be used for multiple purposes as Information Exchange and also as a **Authorization scenario**!
+
+_Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token._ ~ JWT
+
+---
+
+## Token Required Barrier
+
+The token_required decorator function ensures that a valid JSON Web Token is present in the request headers before allowing access to the decorated route. It retrieves the token from the request headers and decodes it using a _key_. 
+
+Our secret key was generate using the follow command (generating a random 32-byte hexadecimal string)
+```js filename="generate-string.js" copy
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+1. If the token is missing, expired, or invalid, it returns an appropriate error message and a 401 status code. 
+2. It also checks if the user associated with the token exists in the database. 
+3. If the user is not found, it returns a "User not found" message. 
+4. If the token is valid and the user exists, it calls the decorated function, passing the current user.
+
+<Callout type="info">
+  Token Authentication is required in some of: DELETE, PUT and POST methods.
+</Callout>
+
+```python filename="app.js" {1} copy showLineNumbers
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = request.headers.get('token')  
+        if not token:
+            return jsonify({'message': 'Token is missing!'}), 401
+        try:
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+            current_user = users_collection.find_one({"username": data['username']})
+            
+            if not current_user:
+                return jsonify({'message': 'User not found'}), 401
+            
+        except jwt.ExpiredSignatureError:
+            return jsonify({'message': 'Token has expired!'}), 401
+        except jwt.InvalidTokenError:
+            return jsonify({'message': 'Invalid token!'}), 401
+        
+        return f(current_user, *args, **kwargs)
+    return decorated
+```
+
+Additionally, more information about token generation can be found in <a href="api-post/user-login">Login endpoint</a>.
+
+---
+
+## All @token_required endpoints available
+
+<Cards>
+  <Card title="DELETE /books/id" href="api-delete/books-id" />
+  <Card title="PUT /books/id" href="api-put/books-id" />
+  <Card title="POST /books" href="api-post/books" />
+  <Card title="POST /books/cart" href="api-post/books-cart" />
+  <Card title="POST /user/signup" href="api-post/user-signup" />
+  <Card title="POST /user/login" href="api-post/user-login" />
+  <Card title="POST /user/confirmation" href="api-post/user-confirmation" />
+</Cards>

@@ -1,33 +1,14 @@
-# Advanced
+import { Callout } from 'nextra/components'
+import { Cards, Card } from 'nextra/components'
 
-This is the index page for the Advanced folder!
+# PUT methods
 
-```js filename="demo.js" {3} copy
-let a = 1;
+_The PUT method is used to replace an existing resource with an updated version. This method works by replacing the entire resource (i.e., the specific product located at the /books/12 endpoint) with the data that is included in the request’s body. This means that any fields or properties not included in the request body are deleted, and any new fields or properties are added.._ ~ Postman adapted.
 
-console.log(a);
-```
+---
 
-## Component
+## All PUT endpoints available
 
-import { useState } from 'react'
-
-{/* Import CSS modules */}
-import styles from '../components/counters.module.css'
-
-export const Counter = () => {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)} className={styles.counter}>Clicked {count} times</button>
-    </div>
-  );
-};
-
-<Counter/>
-
-## External Component
-
-import Counters from '../components/counters'
-
-<Counters />
+<Cards>
+  <Card title="/books/id" href="api-put/books-id" />
+</Cards>

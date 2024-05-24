@@ -1,33 +1,57 @@
-# Advanced
+import { Callout } from 'nextra/components'
+import { Cards, Card } from 'nextra/components'
 
-Falar da função de paginação versátil aqui.
+# GET methods
 
-```js filename="demo.js" {3} copy
-let a = 1;
+_The GET method is used to retrieve data on a server. Clients can use the GET method to access all of the resources of a given type, or they can use it to access a specific resource._ ~ Postman.
 
-console.log(a);
+---
+
+Pagination function makes GET methods highly versatile, allowing the same method to query and paginate output with a single configuration line. 
+This function utilizes query parameters such as page number, entry limit, and a configurable sorting system, making it adaptable for all endpoints.
+
+<Callout type="info">
+  Pagination available in: /books, /featured, /title, /author, /year, /categories and /price.
+</Callout>
+
+Additionally, the function returns a dictionary with pagination details, including the current page, next and previous pages, last page, and total item count for the query. This ensures efficient navigation and data management.
+
+```python filename="pagination.js" {1} copy
+def paginate(query, page, limit, sort_field=None, sort_order=1):
+    total_queryBooks = books_collection.count_documents(query) 
+    total_pages = (total_queryBooks + limit - 1) // limit  
+    
+    results = books_collection.find(query).skip((page - 1) * limit).limit(limit)
+
+    if sort_field:
+        results = results.sort(sort_field, sort_order)
+
+    books = list(results)
+    
+    pagination_info = {
+        "pageCurrent": page,
+        "pagePrevious": page - 1 if page > 1 else None,
+        "pageNext": page + 1 if page * limit < total_queryBooks else None,
+        "pageLast": total_pages,
+        "items": total_queryBooks
+    }
+    
+    return books, pagination_info
 ```
 
-## Component
+---
 
-import { useState } from 'react'
+## All GET endpoints available
 
-{/* Import CSS modules */}
-import styles from '../components/counters.module.css'
-
-export const Counter = () => {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)} className={styles.counter}>Clicked {count} times</button>
-    </div>
-  );
-};
-
-<Counter/>
-
-## External Component
-
-import Counters from '../components/counters'
-
-<Counters />
+<Cards>
+  <Card title="/allbooks" href="api-get/allbooks" />
+  <Card title="/books/total" href="api-get/books-total" />
+  <Card title="/books/id" href="api-get/books-id" />
+  <Card title="/books" href="api-get/books" />
+  <Card title="/books/featured" href="api-get/books-featured" />
+  <Card title="/books/title" href="api-get/books-title" />
+  <Card title="/books/author" href="api-get/books-author" />
+  <Card title="/books/year" href="api-get/books-year" />
+  <Card title="/books/categories" href="api-get/books-categories" />
+  <Card title="/books/price" href="api-get/books-price" />
+</Cards>

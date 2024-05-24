@@ -1,0 +1,174 @@
+body {
+    background: #eee;
+    /* This is just a helper in case the element has a transparent background or white colors. */
+  }
+  
+  table {
+    -webkit-border-vertical-spacing: 0;
+    -webkit-border-horizontal-spacing: 0;
+    border-collapse: collapse;
+  }
+  
+  * {
+    align-self: auto;
+    border-style: initial;
+    border-width: 0;
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    justify-self: auto;
+    margin: 0;
+    overflow-wrap: break-word;
+    padding: 0;
+  }
+  
+  .inherited-styles-for-exported-element {
+    color: #c9ced8;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  :focus {
+    outline: 0;
+  }
+  
+  .rs12::before {
+    align-self: baseline;
+    content: none;
+    margin-right: calc(-1*0px);
+    user-select: none;
+  }
+  
+  .rs10 {
+    display: flex;
+  }
+  
+  .⚙, .⚙::after, .⚙::before {
+    box-sizing: border-box;
+  }
+  
+  .ApiReference-Table:has(thead tr) tbody tr:first-child td {
+    padding: 4px 0 0 8px;
+  }
+  
+  .ApiReference-Table td:last-child {
+    padding: 4px 0 0 8px;
+  }
+  
+  .ApiReference-Table td:first-child {
+    font-weight: 700;
+    padding: 4px 0 0 8px;
+  }
+  
+  .ApiReference-Table thead {
+    border-bottom: 1px solid;
+    border-color: #2b3039;
+  }
+  
+  .as1f>* {
+    align-self: flex-start;
+    flex: 0 1 auto;
+  }
+  
+  .as1f {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .as16c {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 12px;
+    line-height: 16px;
+  }
+  
+  .as19h {
+    column-gap: 0;
+    row-gap: 0;
+  }
+  
+  .as19i {
+    border-style: solid;
+  }
+  
+  .as19g {
+    padding: 0;
+  }
+  
+  .as12k {
+    width: 100%;
+  }
+  
+  .as19o {
+    padding: 12px;
+  }
+  
+  .as19p {
+    overflow-x: auto;
+  }
+  
+  .as19j {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+  }
+  
+  .as168 {
+    background-color: #21252c;
+  }
+  
+  .as1d {
+    border-color: #2b3039;
+  }
+  
+  .as16b {
+    text-transform: uppercase;
+  }
+  
+  .as1c {
+    border-style: solid;
+  }
+  
+  .as118 {
+    background-color: #1b1e25;
+  }
+  
+  .as12h {
+    padding: 8px 12px;
+  }
+  
+  .as1a7:not(:first-child) {
+    margin-top: 16px;
+  }
+  
+  .as11f {
+    border-width: 1px;
+  }
+  
+  .as116 {
+    border-radius: 8px;
+  }
+  
+  .as1s {
+    font-weight: 600;
+  }
+  
+  .as13z {
+    border-bottom-width: 1px;
+  }
+  
+  .as19n {
+    border-bottom-right-radius: 0;
+  }
+  
+  .as19m {
+    border-bottom-left-radius: 0;
+  }
+  
+  .as19l {
+    border-top-right-radius: 8px;
+  }
+  
+  .as19k {
+    border-top-left-radius: 8px;
+  }

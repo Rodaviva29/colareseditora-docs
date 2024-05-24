@@ -1,40 +1,61 @@
-# `GET /api/v1/books`
+# `GET /api/v1/books/price`
 
-Retrieves a list of books with pagination.
+### Description:
+This endpoint allows users to retrieve a list of books within a specified price range.
 
-### Parameters
+### Parameters:
+- `min_price` (optional): Minimum price of the books to be retrieved. Default is `0`.
+- `max_price` (optional): Maximum price of the books to be retrieved. Default is `no max price`.
+- `page` (optional): Page number for pagination. Default is `1`.
+- `limit` (optional): Number of books per page. Default is `10`.
+- `sort_order` (optional): Sorting order of the results. `1` for ascending and `-1` for descending. Default is `1`.
 
-- `page` (integer): Specifies the page number. Default is 1.
-- `limit` (integer): Specifies the number of books per page. Default is 10.
+### Examples
 
-### Request
+#### Right Request
 
-```http
-GET /api/v1/books?page=1&limit=10
+```http copy
+GET /api/v1/books/price?min_price=10&max_price=50&page=2&limit=20&sort_order=-1
 ```
 
-### Response
+#### Follow up Response
 
 ```json
-[
-  {
-    "id": 1,
-    "title": "Book Title 1",
-    "author": "Author Name 1",
-    "published_year": 2022
-  },
-  {
-    "id": 2,
-    "title": "Book Title 2",
-    "author": "Author Name 2",
-    "published_year": 2023
-  }
-  // More books...
-]
+{
+    "books": [
+        {
+            "_id": "6123d2c4a3490d001f2cf0db",
+            "title": "Example Book 1",
+            "author": "John Doe",
+            "price": 20
+            // More information
+        },
+        {
+            "_id": "6123d2c4a3490d001f2cf0dc",
+            "title": "Example Book 2",
+            "author": "Jane Smith",
+            "price": 30
+            // More information
+        }
+    ],
+    "pageCurrent": 1,
+    "pagePrevious": null,
+    "pageNext": 2,
+    "pageLast": 3,
+    "items": 34
+}
 ```
 
-#### Status Codes
+#### Wrong Response (Invalid Sort Order Value):
 
-- `200 OK`: Returned when the request is successful.
-- `400 Bad Request`: Returned when the request parameters are invalid.
-- `500 Internal Server Error`: Returned when there is an unexpected server error.
+```http
+GET /api/v1/books/price?min_price=ten&max_price=50&page=2&limit=20&sort_order=-1
+```
+
+#### Follow up Response
+
+```json
+{
+    "error": "Invalid parameters provided."
+}
+```

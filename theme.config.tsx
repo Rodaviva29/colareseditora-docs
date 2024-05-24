@@ -25,9 +25,9 @@ const config: DocsThemeConfig = {
   editLink: {
     component: null,
   },
-  toc: {
-    title: "Neste página",
-  },
+ //toc: {
+ //  title: "Neste página",
+ //},
 }
 
 export default config
