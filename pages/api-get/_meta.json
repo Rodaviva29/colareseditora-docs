@@ -1,0 +1,13 @@
+{
+    "allbooks": "/api/v1/allbooks",
+    "books-total": "/api/v1/books/total",
+    "books-id": "/api/v1/books/id",
+    "books": "/api/v1/books",
+    "books-featured": "/api/v1/books/featured",
+    "books-title": "/api/v1/books/title",
+    "books-author": "/api/v1/books/author",
+    "books-year": "/api/v1/books/year",
+    "books-categories": "/api/v1/books/categories",
+    "books-price": "/api/v1/books/price"
+}
+  

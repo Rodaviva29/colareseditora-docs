@@ -1,0 +1,75 @@
+import { Callout, Steps, Cards, Card } from 'nextra/components'
+
+# Wiki and Setup Guide
+
+## PART I
+
+<Steps>
+
+### Clone the front-end and backend project
+ 
+Copy the repository using the following command and directly go to the right directory:
+
+```bash copy
+git clone https://github.com/JoaoVitorFigueiredo/colareseditora.git && cd colareseditora
+```
+ 
+### Install project dependencies
+ 
+```bash copy
+npm install
+```
+
+### Start the development front-end server
+
+```bash copy
+npm start
+```
+
+**Note:** If any of the required ports are already in use, you can change them in the `package.json` file under the `start` script. For example:
+```json copy
+"start": "PORT=4000 react-scripts start"
+```
+
+</Steps>
+
+## PART II
+
+<Steps>
+
+### Go to backend project directory
+ 
+```bash copy
+cd backend
+```
+ 
+### Install a virtual enviroment
+
+If you don't have the module to allow certain dependencies, use `pip install virtualenv`.
+ 
+```bash copy
+python -m venv venv 
+.\venv\Scripts\activate
+```
+
+### Install all the necessary python modules into the backend
+
+```bash copy
+python -m pip install Flask
+pip install pymongo
+pip install -U flask-cors
+pip install python-dotenv
+pip install pyJWT
+```
+
+### Start the development backend-end server and pack and go!
+
+```bash copy
+flask --app app run --debug
+```
+
+</Steps>
+
+If you want to check the legacy and deprecated setup check:
+
+<Card title="Version V1" href="/setup-legacy" />

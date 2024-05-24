@@ -1,0 +1,8 @@
+{
+    "books": "/api/v1/books",
+    "books-cart": "/api/v1/books/cart",
+    "user-signup": "/api/v1/user/signup",
+    "user-login": "/api/v1/user/login",
+    "user-confirmation": "/api/v1/user/confirmation"
+}
+  

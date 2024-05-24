@@ -1,0 +1,57 @@
+import { Callout, Steps } from 'nextra/components'
+
+# Install V1
+
+<Callout type="warning" emoji="⚠️">
+  This version is a deprecated and a legacy version!
+</Callout>
+
+<Callout type="error" emoji="️🚫">
+  Please don't use this version if you don't know what you are doing.
+</Callout>
+
+<Steps>
+
+### Clone the front-end and backend project
+ 
+Copy the repository using the following command and directly go to the right directory:
+
+```bash copy
+git clone https://github.com/JoaoVitorFigueiredo/colareseditora.git && cd colareseditora
+```
+ 
+### Install project dependencies
+ 
+```bash copy
+npm install
+```
+
+### Start the development front-end server
+
+```bash copy
+npm start
+```
+
+**Note:** If any of the required ports are already in use, you can change them in the `package.json` file under the `start` script. For example:
+```json copy
+"start": "PORT=4000 react-scripts start"
+```
+
+### Install json-server module
+
+This package and module need to be installed globally to work.
+ 
+```bash copy
+npm install -g json-server@0.17.4
+```
+
+**Note:** Ensure that you install version 0.17.4 as newer versions may not support certain functionalities.
+
+### Start the localhost JSON server and pack and go!
+
+```bash copy
+json-server --watch db.json --port 3030
+```
+
+</Steps>
+

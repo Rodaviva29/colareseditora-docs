@@ -1,0 +1,11 @@
+{
+  "index": "Introdução",
+  "setup": "Start Guide",
+  "setup-legacy": {
+    "display": "hidden"
+  },
+  "api-get": "GET Methods",
+  "api-put": "PUT Methods",
+  "api-post": "POST Methods",
+  "api-delete": "DELETE Methods"
+}
