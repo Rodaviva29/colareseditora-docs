@@ -46,6 +46,28 @@ npm start
 ```bash copy
 cd backend
 ```
+
+### Create an enviroment file
+
+If you're using Linux or MacOS you can use the following command in the terminal.
+ 
+```bash copy
+touch .env
+```
+
+If you're using Windows you can use the following command in the terminal.
+ 
+```bash copy
+echo > .env
+```
+
+Copy the enviroment structure and add the following below.
+
+```json copy
+MONGO_URI = "mongodb+srv://pawcProject:hXhsG06lFeIkGncn@projects.byvvekw.mongodb.net/"
+SECRET_KEY = "34a43495d1e41aa64d5651b028d8cc1237c083f4a609b370165e66665f87d35a"
+```
+
  
 ### Install a virtual enviroment
 
@@ -70,6 +92,11 @@ pip install pyJWT
 
 ```bash copy
 flask --app app run --debug
+```
+
+**Note:** Default port is also 3000. If default is already in use, you can change it with `--port <new port>` (_we used this approach_).
+```bash copy
+flask --app app run --debug --port 3001
 ```
 
 </Steps>

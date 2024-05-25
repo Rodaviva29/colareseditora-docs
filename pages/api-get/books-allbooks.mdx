@@ -1,9 +1,9 @@
 import { Tabs } from 'nextra/components'
 
-# `GET /api/v1/books/featured`
+# `GET /api/v1/books/allbooks`
 
 ### Description
-This endpoint allows developers to retrieve a list of the best 5 scored books ordered by ascending price.
+This endpoint allows developers to retrieve a list of all books from the database.
 
 ### Parameters
 No parameters required (and/or available).
@@ -15,19 +15,19 @@ No parameters required (and/or available).
 <Tabs items={['HTTP', 'Curl', 'NodeJS', 'Python']} defaultIndex="1">
   <Tabs.Tab>
   ```http copy
-    localhost:3001/api/v1/books/featured
+    localhost:3001/api/v1/books/allbooks
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ``` curl copy
-    curl -X GET 'localhost:3001/api/v1/books/featured'
+    curl -X GET 'localhost:3001/api/v1/books/allbooks'
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```js copy
     const axios = require('axios');
 
-    axios.get('localhost:3001/api/v1/books/featured')
+    axios.get('localhost:3001/api/v1/books/allbooks')
     .then((response) => {
     console.log(response.data);
     // Do something with the response.
@@ -41,7 +41,7 @@ No parameters required (and/or available).
     ```py copy
     import requests
 
-    url = 'localhost:3001/api/v1/books/featured'
+    url = 'localhost:3001/api/v1/books/allbooks'
 
     try:
         response = requests.get(url)
@@ -55,25 +55,29 @@ No parameters required (and/or available).
 
 ### Response
 
-The response will show all 5 books with the best score ordered by ascending price. This response will give you 5 books max (can give you less if the database has less than 5 books).
+The response will show all books without any specific criteria. This response will give you all books from the database.
 
 ```json
 [
         {
-            "_id": "6651c712fe5f5504f6bb05d1",
-            "title": "Flexible Rails",
-            "score": 5,
-            "price": 16.41,
+            "_id": "6651c712fe5f5504f6bb05c8",
+            "title": "Unlocking Android",
+            "authors": [
+                "W. Frank Ableson",
+                "Charlie Collins",
+                "Robi Sen"
+            ],
             // More book information
         },
         {
-            "_id": "6651c712fe5f5504f6bb05c8",
-            "title": "Unlocking Android",
-            "score": 5,
-            "price": 26,
+            "_id": "6651c712fe5f5504f6bb05c9",
+            "title": "Android in Action, Second Edition",
+            "authors": [
+                "W. Frank Ableson",
+                "Robi Sen"
+            ],
             // More book information
         }
-        // 3 more books
 ]
 ```
 

@@ -25,6 +25,14 @@ const config: DocsThemeConfig = {
   editLink: {
     component: null,
   },
+  banner: {
+    key: '2.0-release',
+    text: (
+      <a href="https://github.com/JoaoVitorFigueiredo/colareseditora" target="_blank">
+        🎉 Colares Editora 2.0 is released. Check repo →
+      </a>
+    )
+  }
  //toc: {
  //  title: "Neste página",
  //},

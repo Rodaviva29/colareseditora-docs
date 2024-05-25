@@ -3,14 +3,15 @@ import { Tabs } from 'nextra/components'
 # `GET /api/v1/books/price`
 
 ### Description:
-This endpoint allows users to retrieve a list of books within a specified price range and other parameters.
+This endpoint allows users to retrieve a list of books within a specified price range and other pagination parameters.
 
 ### Parameters:
-- `min_price`: Minimum price of the books to be retrieved. Default is `0`.
-- `max_price`: Maximum price of the books to be retrieved. Default is `no max price`.
-- `page`: Page number for pagination. Default is `1`.
-- `limit`: Number of books per page. Default is `10`.
-- `sort_order`: Sorting order of the results. `1` for ascending and `-1` for descending. Default is `1`.
+- `page`: Page number for pagination. Default is `1` (int).
+- `limit`: Number of books per page. Default is `10` (int).
+- `sort_type`: Type of sorting based on a book characteristic. Default is `price` (str).
+- `sort_order`: Sorting order of the results. `1` for ascending and `-1` for descending. Default is `1` (int).
+- `min_price`: Minimum price of the books to be retrieved. Default is `0` (int).
+- `max_price`: Maximum price of the books to be retrieved. Default is `no max price` (int).
 
 ---
 
@@ -19,12 +20,12 @@ This endpoint allows users to retrieve a list of books within a specified price 
 <Tabs items={['HTTP', 'Curl', 'NodeJS', 'Python']} defaultIndex="1">
   <Tabs.Tab>
   ```http copy
-    localhost:3000/api/v1/books/price?min_price=10&max_price=50&page=2&limit=20&sort_order=1
+    localhost:3001/api/v1/books/price?min_price=50&max_price=60&page=2&limit=20&sort_order=1
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```curl copy
-    curl -X GET 'localhost:3000/api/v1/books/price?min_price=10&max_price=50&page=1&limit=10&sort_order=1'
+    curl -X GET 'localhost:3001/api/v1/books/price?min_price=50&max_price=60&page=1&limit=20&sort_order=1'
   ```
   </Tabs.Tab>
 
@@ -33,12 +34,12 @@ This endpoint allows users to retrieve a list of books within a specified price 
     ```js copy
     const axios = require('axios');
 
-    axios.get('localhost:3000/api/v1/books/price', {
+    axios.get('localhost:3001/api/v1/books/price', {
     params: {
-        min_price: 10,
-        max_price: 50,
+        min_price: 50,
+        max_price: 60,
         page: 1,
-        limit: 10,
+        limit: 20,
         sort_order: 1
     }
     })
@@ -56,12 +57,12 @@ This endpoint allows users to retrieve a list of books within a specified price 
     ```py copy
     import requests
 
-    url = 'localhost:3000/api/v1/books/price'
+    url = 'localhost:3001/api/v1/books/price'
     params = {
-        'min_price': 10,
-        'max_price': 50,
+        'min_price': 50,
+        'max_price': 60,
         'page': 1,
-        'limit': 10,
+        'limit': 20,
         'sort_order': 1
     }
 
@@ -77,25 +78,23 @@ This endpoint allows users to retrieve a list of books within a specified price 
 
 ### Response
 
-The response will show first the lower prices (ascending order is 1 and it was the order provided). Also will only show the books within the price range of 10 and 50.
-The results will be only for the page 1 and the limit will be 10 results. (because, they're only 2 results to show, that won't make a difference)
+The response will show first the lower prices (ascending order is 1 and it was the order provided). Also will only show the books within the price range of 50 and 60.
+The results will be only for the page 1 and the limit will be 20 results. (because, they're only 2 results to show, that parameterization won't make a difference)
 
 ```json
 {
     "books": [
         {
-            "_id": "6123d2c4a3490d001f2cf0db",
-            "title": "Example Book 1",
-            "author": "John Doe",
-            "price": 20
-            // More information
+            "_id": "6651c712fe5f5504f6bb05e0",
+            "title": "Designing Hard Software",
+            "price": 54.99
+            // More book information
         },
         {
-            "_id": "6123d2c4a3490d001f2cf0dc",
-            "title": "Example Book 2",
-            "author": "Jane Smith",
-            "price": 30
-            // More information
+            "_id": "6651c712fe5f5504f6bb05dd",
+            "title": "Java Persistence with Hibernate",
+            "price": 59.32
+            // More book information
         }
     ],
     "pageCurrent": 1,

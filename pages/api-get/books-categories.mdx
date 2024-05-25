@@ -2,16 +2,16 @@ import { Tabs } from 'nextra/components'
 
 # `GET /api/v1/books/<string:categories>`
 
-### Description:
+### Description
 This endpoint allows users to retrieve a list of books based on a specified category.
 
-### Parameters:
-
+### Parameters
 All parameters are optional, if there is no specific value provided, default will be used.
 
-- `page`: Page number for pagination. Default is `1`.
-- `limit`: Number of books per page. Default is `10`.
-- `sort_order`: Sorting order of the results. `1` for ascending and `-1` for descending. Default is `1`.
+- `page`: Page number for pagination. Default is `1` (int).
+- `limit`: Number of books per page. Default is `10` (int).
+- `sort_type`: Type of sorting based on a book characteristic. Default is `id` (str).
+- `sort_order`: Sorting order of the results. `1` for ascending and `-1` for descending. Default is `1` (int).
 
 ---
 
@@ -20,19 +20,19 @@ All parameters are optional, if there is no specific value provided, default wil
 <Tabs items={['HTTP', 'Curl', 'NodeJS', 'Python']} defaultIndex="1">
   <Tabs.Tab>
   ```http copy
-    localhost:3000/api/v1/books/categories/Java?page=1&limit=10
+    localhost:3001/api/v1/books/categories/Java?page=1&limit=10
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ``` curl copy
-    curl -X GET 'localhost:3000/api/v1/books/categories/Java?page=1&limit=10'
+    curl -X GET 'localhost:3001/api/v1/books/categories/Java?page=1&limit=10'
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```js copy
     const axios = require('axios');
 
-    axios.get('localhost:3000/api/v1/books/categories/Java', {
+    axios.get('localhost:3001/api/v1/books/categories/Java', {
     params: {
         page: 1,
         limit: 10
@@ -51,7 +51,7 @@ All parameters are optional, if there is no specific value provided, default wil
     ```py copy
     import requests
 
-    url = 'localhost:3000/api/v1/books/categories/Java'
+    url = 'localhost:3001/api/v1/books/categories/Java'
     params = {
         'page': 1,
         'limit': 10
@@ -69,7 +69,7 @@ All parameters are optional, if there is no specific value provided, default wil
 
 ### Response
 
-The response will show books that match the specified category, with pagination details. For example, if the category is "Fiction" and there are 2 matching results.
+The response will show books that match the specified category, with pagination details. For example, if the category is _"Java"_ there will be 2 matching results of books that have that category (and can also have others).
 
 ```json
 
@@ -81,7 +81,7 @@ The response will show books that match the specified category, with pagination 
             "categories": [
                 "Java"
             ],
-            // More information
+            // More book information
         },
         {
             "_id": "6123d2c4a3490d001f2cf0dc",
@@ -89,7 +89,7 @@ The response will show books that match the specified category, with pagination 
             "categories": [
                 "Java"
             ],
-            // More information
+            // More book information
         }
         // 6 more results...
     ],

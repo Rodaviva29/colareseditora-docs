@@ -1,5 +1,4 @@
-import { Callout } from 'nextra/components'
-import { Cards, Card } from 'nextra/components'
+import { Callout, Cards, Card, Steps } from 'nextra/components'
 
 # GET methods
 
@@ -38,6 +37,38 @@ def paginate(query, page, limit, sort_field=None, sort_order=1):
     
     return books, pagination_info
 ```
+
+---
+
+### How to use Pagination Parametrization
+
+<Steps>
+
+### Simple Way (default)
+ 
+You can use the default values of pagination and don't worry about it!
+
+It will use the default values of the specific endpoint.
+
+```http copy
+localhost:3001/api/v1/books
+```
+ 
+### Advanced Way (personalized)
+
+You can use personalized parameters within the values allowed.
+For example, you can sort_values and order them and limit the pages!
+
+Limit, pages and sort_by can only receive an **integer value**.
+And sort_type can only receive a **string value**.
+
+To add (more) parameters use `?` followed by the `name of the parameter` available, then `=` and finally the key/value you want to use within the type allowed. 
+ 
+```http copy
+localhost:3001/api/v1/books?limit=20?sort_type=pageCount
+```
+
+</Steps>
 
 ---
 

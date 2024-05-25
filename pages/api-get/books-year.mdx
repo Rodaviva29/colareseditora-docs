@@ -1,1 +1,99 @@
+import { Tabs } from 'nextra/components'
+
 # `GET /api/v1/books/<int:year>`
+
+### Description
+This endpoint allows users to retrieve a list of books based on a specified year (eg: 2012).
+
+### Parameters
+All parameters are optional, if there is no specific value provided, default will be used.
+
+- `page`: Page number for pagination. Default is `1` (int).
+- `limit`: Number of books per page. Default is `10` (int).
+- `sort_type`: Type of sorting based on a book characteristic. Default is `id` (str).
+- `sort_order`: Sorting order of the results. `1` for ascending and `-1` for descending. Default is `1` (int).
+
+---
+
+### Request
+ 
+<Tabs items={['HTTP', 'Curl', 'NodeJS', 'Python']} defaultIndex="1">
+  <Tabs.Tab>
+  ```http copy
+    localhost:3001/api/v1/books/year/2012?page=1&limit=10
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```curl copy
+    curl -X GET 'localhost:3001/api/v1/books/year/2012?page=1&limit=10'
+  ```
+  </Tabs.Tab>
+
+  <Tabs.Tab>
+
+    ```js copy
+    const axios = require('axios');
+
+    axios.get('localhost:3001/api/v1/books/year/2012', {
+    params: {
+        page: 1,
+        limit: 10
+    }
+    })
+    .then((response) => {
+    console.log(response.data);
+    // Do something with the response.
+    })
+    .catch((error) => {
+    console.error(error);
+    });
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```py copy
+    import requests
+
+    url = 'localhost:3001/api/v1/books/year/2012'
+    params = {
+        'page': 1,
+        'limit': 10
+    }
+
+    try:
+        response = requests.get(url, params=params)
+        data = response.json()
+        # Do something with the response.
+    except requests.exceptions.RequestException as e:
+        print('Error:', e)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+### Response
+
+The response will show books that match the specified year, with pagination details. For example, if the year is _2012_ there will be 2 matching results, two book that were published in the same year (2012).
+
+```json
+{
+    "books": [
+        {
+            "_id": "6123d2c4a3490d001f2cf0db",
+            "title": "Griffon in Action",
+            "publishedDate": "Mon, 04 Jun 2012 07:00:00 GMT",
+            // More book information
+        },
+        {
+            "_id": "6123d2c4a3490d001f2cf0dc",
+            "title": "Hello! Python",
+            "publishedDate": "Mon, 13 Feb 2012 08:00:00 GMT",
+            // More book information
+        }
+    ],
+    "pageCurrent": 1,
+    "pagePrevious": null,
+    "pageNext": null,
+    "pageLast": 1,
+    "items": 2
+}
+```

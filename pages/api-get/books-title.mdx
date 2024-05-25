@@ -2,16 +2,16 @@ import { Tabs } from 'nextra/components'
 
 # `GET /api/v1/books/<string:title>`
 
-### Description:
+### Description
 This endpoint allows users to retrieve a list of books based on a specified title.
 
-### Parameters:
-
+### Parameters
 All parameters are optional, if there is no specific value provided, default will be used.
 
-- `page`: Page number for pagination. Default is `1`.
-- `limit`: Number of books per page. Default is `10`.
-- `sort_order`: Sorting order of the results. `1` for ascending and `-1` for descending. Default is `1`.
+- `page`: Page number for pagination. Default is `1` (int).
+- `limit`: Number of books per page. Default is `10` (int).
+- `sort_type`: Type of sorting based on a book characteristic. Default is `id` (str).
+- `sort_order`: Sorting order of the results. `1` for ascending and `-1` for descending. Default is `1` (int).
 
 ---
 
@@ -20,12 +20,12 @@ All parameters are optional, if there is no specific value provided, default wil
 <Tabs items={['HTTP', 'Curl', 'NodeJS', 'Python']} defaultIndex="1">
   <Tabs.Tab>
   ```http copy
-    localhost:3000/api/v1/books/title/Flex?page=1&limit=10
+    localhost:3001/api/v1/books/title/Flex?page=1&limit=10
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```curl copy
-    curl -X GET 'localhost:3000/api/v1/books/title/Flex?page=1&limit=10'
+    curl -X GET 'localhost:3001/api/v1/books/title/Flex?page=1&limit=10'
   ```
   </Tabs.Tab>
 
@@ -34,7 +34,7 @@ All parameters are optional, if there is no specific value provided, default wil
     ```js copy
     const axios = require('axios');
 
-    axios.get('localhost:3000/api/v1/books/title/Flex', {
+    axios.get('localhost:3001/api/v1/books/title/Flex', {
     params: {
         page: 1,
         limit: 10
@@ -54,7 +54,7 @@ All parameters are optional, if there is no specific value provided, default wil
     ```py copy
     import requests
 
-    url = 'localhost:3000/api/v1/books/title/Flex'
+    url = 'localhost:3001/api/v1/books/title/Flex'
     params = {
         'page': 1,
         'limit': 10
@@ -72,27 +72,27 @@ All parameters are optional, if there is no specific value provided, default wil
 
 ### Response
 
-The response will show books that match the specified title, with pagination details. For example, if the title is "Example Book" there are 2 matching results.
+The response will show books that match the specified title, with pagination details. For example, if the title is _"Flex"_ there will be 2 matching results, two book titles that start with _"Flex"_.
 
 ```json
 {
     "books": [
         {
-            "_id": ObjectId("6123d2c4a3490d001f2cf0db"),
+            "_id": "6123d2c4a3490d001f2cf0db",
             "title": "Flex 3 in Action",
-            "author": "John Doe"
-            // More information
+            // More book information
         },
         {
-            "_id": ObjectId("6123d2c4a3490d001f2cf0dc"),
+            "_id": "6123d2c4a3490d001f2cf0dc",
             "title": "Flex 4 in Action",
-            // More information
+            // More book information
         }
+        // 3 more books
     ],
     "pageCurrent": 1,
     "pagePrevious": null,
     "pageNext": null,
     "pageLast": 1,
-    "items": 2
+    "items": 5
 }
 ```
