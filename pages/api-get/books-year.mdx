@@ -20,12 +20,12 @@ All parameters are optional, if there is no specific value provided, default wil
 <Tabs items={['HTTP', 'Curl', 'NodeJS', 'Python']} defaultIndex="1">
   <Tabs.Tab>
   ```http copy
-    localhost:3001/api/v1/books/year/2012?page=1&limit=10
+    localhost:5000/api/v1/books/year/2012?page=1&limit=10
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```curl copy
-    curl -X GET 'localhost:3001/api/v1/books/year/2012?page=1&limit=10'
+    curl -X GET 'localhost:5000/api/v1/books/year/2012?page=1&limit=10'
   ```
   </Tabs.Tab>
 
@@ -34,7 +34,7 @@ All parameters are optional, if there is no specific value provided, default wil
     ```js copy
     const axios = require('axios');
 
-    axios.get('localhost:3001/api/v1/books/year/2012', {
+    axios.get('localhost:5000/api/v1/books/year/2012', {
     params: {
         page: 1,
         limit: 10
@@ -54,7 +54,7 @@ All parameters are optional, if there is no specific value provided, default wil
     ```py copy
     import requests
 
-    url = 'localhost:3001/api/v1/books/year/2012'
+    url = 'localhost:5000/api/v1/books/year/2012'
     params = {
         'page': 1,
         'limit': 10

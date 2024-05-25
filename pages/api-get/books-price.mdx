@@ -20,12 +20,12 @@ This endpoint allows users to retrieve a list of books within a specified price 
 <Tabs items={['HTTP', 'Curl', 'NodeJS', 'Python']} defaultIndex="1">
   <Tabs.Tab>
   ```http copy
-    localhost:3001/api/v1/books/price?min_price=50&max_price=60&page=2&limit=20&sort_order=1
+    localhost:5000/api/v1/books/price?min_price=50&max_price=60&page=2&limit=20&sort_order=1
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```curl copy
-    curl -X GET 'localhost:3001/api/v1/books/price?min_price=50&max_price=60&page=1&limit=20&sort_order=1'
+    curl -X GET 'localhost:5000/api/v1/books/price?min_price=50&max_price=60&page=1&limit=20&sort_order=1'
   ```
   </Tabs.Tab>
 
@@ -34,7 +34,7 @@ This endpoint allows users to retrieve a list of books within a specified price 
     ```js copy
     const axios = require('axios');
 
-    axios.get('localhost:3001/api/v1/books/price', {
+    axios.get('localhost:5000/api/v1/books/price', {
     params: {
         min_price: 50,
         max_price: 60,
@@ -57,7 +57,7 @@ This endpoint allows users to retrieve a list of books within a specified price 
     ```py copy
     import requests
 
-    url = 'localhost:3001/api/v1/books/price'
+    url = 'localhost:5000/api/v1/books/price'
     params = {
         'min_price': 50,
         'max_price': 60,

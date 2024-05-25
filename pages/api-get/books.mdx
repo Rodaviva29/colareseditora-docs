@@ -16,12 +16,12 @@ Retrieves a list of books with pagination.
 <Tabs items={['HTTP', 'Curl', 'NodeJS', 'Python']} defaultIndex="1">
   <Tabs.Tab>
   ```http copy
-    localhost:3001/api/v1/books?page=1&limit=1
+    localhost:5000/api/v1/books?page=1&limit=1
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```curl copy
-    curl -X GET 'localhost:3001/api/v1/books?page=1&limit=1'
+    curl -X GET 'localhost:5000/api/v1/books?page=1&limit=1'
   ```
   </Tabs.Tab>
 
@@ -30,7 +30,7 @@ Retrieves a list of books with pagination.
     ```js copy
     const axios = require('axios');
 
-    axios.get('localhost:3001/api/v1/books', {
+    axios.get('localhost:5000/api/v1/books', {
     params: {
         page: 1,
         limit: 1
@@ -50,7 +50,7 @@ Retrieves a list of books with pagination.
     ```py copy
     import requests
 
-    url = 'localhost:3001/api/v1/books'
+    url = 'localhost:5000/api/v1/books'
     params = {
         'page': 1,
         'limit': 1

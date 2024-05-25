@@ -15,19 +15,19 @@ No parameters required (and/or available).
 <Tabs items={['HTTP', 'Curl', 'NodeJS', 'Python']} defaultIndex="1">
   <Tabs.Tab>
   ```http copy
-    localhost:3001/api/v1/books/featured
+    localhost:5000/api/v1/books/featured
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ``` curl copy
-    curl -X GET 'localhost:3001/api/v1/books/featured'
+    curl -X GET 'localhost:5000/api/v1/books/featured'
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```js copy
     const axios = require('axios');
 
-    axios.get('localhost:3001/api/v1/books/featured')
+    axios.get('localhost:5000/api/v1/books/featured')
     .then((response) => {
     console.log(response.data);
     // Do something with the response.
@@ -41,7 +41,7 @@ No parameters required (and/or available).
     ```py copy
     import requests
 
-    url = 'localhost:3001/api/v1/books/featured'
+    url = 'localhost:5000/api/v1/books/featured'
 
     try:
         response = requests.get(url)

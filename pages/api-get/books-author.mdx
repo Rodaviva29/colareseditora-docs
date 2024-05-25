@@ -20,19 +20,19 @@ All parameters are optional, if there is no specific value provided, default wil
 <Tabs items={['HTTP', 'Curl', 'NodeJS', 'Python']} defaultIndex="1">
   <Tabs.Tab>
   ```http copy
-    localhost:3001/api/v1/books/author/Yehuda%20Katz?page=1&limit=10
+    localhost:5000/api/v1/books/author/Yehuda%20Katz?page=1&limit=10
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ``` curl copy
-    curl -X GET 'localhost:3001/api/v1/books/author/Yehuda%20Katz?page=1&limit=10'
+    curl -X GET 'localhost:5000/api/v1/books/author/Yehuda%20Katz?page=1&limit=10'
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```js copy
     const axios = require('axios');
 
-    axios.get('localhost:3001/api/v1/books/author/Yehuda Katz', {
+    axios.get('localhost:5000/api/v1/books/author/Yehuda Katz', {
     params: {
         page: 1,
         limit: 10
@@ -51,7 +51,7 @@ All parameters are optional, if there is no specific value provided, default wil
     ```py copy
     import requests
 
-    url = 'localhost:3001/api/v1/books/author/Yehuda Katz'
+    url = 'localhost:5000/api/v1/books/author/Yehuda Katz'
     params = {
         'page': 1,
         'limit': 10

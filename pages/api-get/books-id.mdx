@@ -1,6 +1,6 @@
 import { Tabs } from 'nextra/components'
 
-# `GET /api/v1/books/<string:id>`
+# `GET /api/v1/books/<int:id>`
 
 ### Description
 This endpoint allows developers to retrieve a book with the specific ID provided.
@@ -18,19 +18,19 @@ There is only one parameter available and **it's required** to this endpoint ret
 <Tabs items={['HTTP', 'Curl', 'NodeJS', 'Python']} defaultIndex="1">
   <Tabs.Tab>
   ```http copy
-    localhost:3001/api/v1/books/2
+    localhost:5000/api/v1/books/2
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ``` curl copy
-    curl -X GET 'localhost:3001/api/v1/books/2'
+    curl -X GET 'localhost:5000/api/v1/books/2'
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```js copy
     const axios = require('axios');
 
-    axios.get('localhost:3001/api/v1/books/2')
+    axios.get('localhost:5000/api/v1/books/2')
     .then((response) => {
     console.log(response.data);
     // Do something with the response.
@@ -44,7 +44,7 @@ There is only one parameter available and **it's required** to this endpoint ret
     ```py copy
     import requests
 
-    url = 'localhost:3001/api/v1/books/2'
+    url = 'localhost:5000/api/v1/books/2'
 
     try:
         response = requests.get(url)
@@ -71,5 +71,14 @@ The response will show the book with the specific ID provided.
         ],
         // More book information
     }
+```
+
+If there is no book with that ID, it will give **Error 404**.
+
+```json
+  {
+    "message": "Error", 
+    "status": "Book not found"
+  }
 ```
 
