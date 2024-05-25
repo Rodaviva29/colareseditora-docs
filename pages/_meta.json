@@ -5,7 +5,7 @@
     "display": "hidden"
   },
   "authentication": "Authentication",
-  "errors": "Errors",
+  "status-codes": "Errors and Codes",
   "api-get": "GET Methods",
   "api-put": "PUT Methods",
   "api-post": "POST Methods",
