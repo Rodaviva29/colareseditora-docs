@@ -22,14 +22,19 @@ There is only one parameter available and **it's required** to this endpoint mak
 <Tabs items={['Curl', 'NodeJS', 'Python']} defaultIndex="1">
   <Tabs.Tab>
   ``` curl copy
-    curl -X DELETE 'localhost:5000/api/v1/books/2'
+    curl -X DELETE -H "token: your_token" 'localhost:5000/api/v1/books/2'
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```js copy
     const axios = require('axios');
 
-    axios.delete('localhost:5000/api/v1/books/2')
+    axios.delete('localhost:5000/api/v1/books/2', 
+    {
+        headers: {
+            token: token
+        }
+    })
     .then((response) => {
       console.log(response.data);
       // Do something with the response.
@@ -44,9 +49,12 @@ There is only one parameter available and **it's required** to this endpoint mak
     import requests
 
     url = 'localhost:5000/api/v1/books/2'
+    headers = {
+        'token': 'your_token'
+    }
 
     try:
-        response = requests.delete(url)
+        response = requests.delete(url, headers=headers)
         data = response.json()
         # Do something with the response.
     except requests.exceptions.RequestException as e:
@@ -66,11 +74,52 @@ The response will show if the book was **deleted successfully**.
   }
 ```
 
-If there is no book with that ID, it will give **Error 404**.
+<Steps>
+
+### Bad Request (400)
+ 
+If the token is missing in the request header.
+
+```json
+{
+    "code": "400",
+    "status": "Bad Request",
+    "message": "Token header is required"
+}
+```
+
+### Unauthorized (401)
+ 
+ If the Administrator token is expired.
+
+```json
+{
+    "code": "401",
+    "status": "Unauthorized",
+    "message": "Token expired"
+}
+```
+
+ If the Administrator token is incorrect.
+
+```json
+{
+    "code": "401",
+    "status": "Unauthorized",
+    "message": "Token incorrect"
+}
+```
+
+### Not Found (404)
+ 
+If there is no book with the specified `id`.
 
 ```json
   {
-    "message": "Error", 
-    "status": "Book not found"
+    "code": "404",
+    "status": "Not Found", 
+    "status": "Book with that ID not found"
   }
 ```
+
+</Steps>

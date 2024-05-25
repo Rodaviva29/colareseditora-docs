@@ -1,15 +1,16 @@
-import { Callout } from 'nextra/components'
-import { Cards, Card } from 'nextra/components'
+import { Callout, Cards, Card, Steps, Tabs } from 'nextra/components'
 
 # `POST /api/v1/user/login`
 
-Retrieves a list of books with pagination.
+### Description
+This endpoint facilitates user logins for existing accounts. 
+
+Users are required to input their username and password to gain access.
+If the user possesses the correct credentials and holds Administrator permissions (confirmed: True), a token will be generated.
 
 <Callout type="info">
   The token is generated with a expiration date of 1 hour.
 </Callout>
-
-Additionally, the function returns a dictionary with pagination details, including the current page, next and previous pages, last page, and total item count for the query. This ensures efficient navigation and data management.
 
 ```python filename="users.py" {1} copy
     token = jwt.encode({
@@ -17,3 +18,121 @@ Additionally, the function returns a dictionary with pagination details, includi
         'exp': datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours=1)
     }, current_app.config['SECRET_KEY'], algorithm='HS256')
 ```
+
+### Body (form data)
+
+This endpoint expects the following data to be provided in the request body:
+
+- `username`: The username for the already existing account. (string)
+- `password`: The password for the already existing account. (string)
+
+---
+
+### Request
+ 
+<Tabs items={['Curl', 'NodeJS', 'Python']} defaultIndex="1">
+  <Tabs.Tab>
+  ``` curl copy
+    curl -X POST -d "username=myusername&password=mypassword" 'localhost:5000/api/v1/user/login'
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```js copy
+    const axios = require('axios');
+
+    axios.post('localhost:5000/api/v1/user/login', {
+        username: 'myusername',
+        password: 'mypassword'
+    })
+    .then((response) => {
+        console.log(response.data);
+        // Do something with the response.
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```py copy
+  import requests
+
+  url = 'localhost:5000/api/v1/user/login'
+  payload = {'username': 'myusername', 'password': 'mypassword'}
+
+  try:
+      response = requests.post(url, data=payload)
+      data = response.json()
+      # Do something with the response.
+  except requests.exceptions.RequestException as e:
+      print('Error:', e)
+  ```
+  </Tabs.Tab>
+</Tabs>
+
+### Response
+
+The response will indicate the success or failure of the login process.
+
+#### Success Response
+
+```json
+{
+    "code": "200",
+    "status": "Success",
+    "message": "User logged in successfully",
+    'token': "ayJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNzE2NjU3MDg4fQ.zwwyASDHTwsP2OcxMmaKZTDRI02DapStIfPyLlZI3K4"
+}
+```
+
+<Steps>
+
+### Bad Request (400)
+ 
+If either the username or password is missing in the request.
+
+```json
+{
+    "code": "400",
+    "status": "Bad Request",
+    "message": "Username and password form is required"
+}
+```
+ 
+### Not Found (404)
+ 
+ If a user with the provided username don't exists.
+
+```json
+{
+    "code": "404",
+    "status": "Not Found",
+    "message": "User not registered"
+}
+```
+
+### Unauthorized (401)
+ 
+ If a user with the provided password is incorrect.
+
+```json
+{
+    "code": "401",
+    "status": "Unauthorized",
+    "message": "Incorrect password"
+}
+```
+
+### Forbidden (403)
+ 
+ If a user with the provided password and username don't possesses the correct credentials.
+
+```json
+{
+    "code": "403",
+    "status": "Unauthorized",
+    "message": "User not confirmed"
+}
+```
+
+</Steps>
