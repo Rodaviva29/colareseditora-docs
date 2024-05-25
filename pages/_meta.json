@@ -4,9 +4,9 @@
   "setup-legacy": {
     "display": "hidden"
   },
-  "api-get": "GET Methods",
   "authentication": "Authentication",
   "errors": "Errors",
+  "api-get": "GET Methods",
   "api-put": "PUT Methods",
   "api-post": "POST Methods",
   "api-delete": "DELETE Methods"

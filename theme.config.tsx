@@ -18,10 +18,10 @@ const config: DocsThemeConfig = {
       titleTemplate: 'JJ – %s',
     }
   },
-  search: {
-    placeholder: 'Pesquisar informações...'
+  //search: {
+    //placeholder: 'Pesquisar informações...'
     //emptyResult: 'Nenhum resultado encontrado.',
-  },
+  //},
   editLink: {
     component: null,
   },

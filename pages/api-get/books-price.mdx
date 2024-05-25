@@ -6,11 +6,11 @@ import { Tabs } from 'nextra/components'
 This endpoint allows users to retrieve a list of books within a specified price range and other parameters.
 
 ### Parameters:
-- `min_price` (optional): Minimum price of the books to be retrieved. Default is `0`.
-- `max_price` (optional): Maximum price of the books to be retrieved. Default is `no max price`.
-- `page` (optional): Page number for pagination. Default is `1`.
-- `limit` (optional): Number of books per page. Default is `10`.
-- `sort_order` (optional): Sorting order of the results. `1` for ascending and `-1` for descending. Default is `1`.
+- `min_price`: Minimum price of the books to be retrieved. Default is `0`.
+- `max_price`: Maximum price of the books to be retrieved. Default is `no max price`.
+- `page`: Page number for pagination. Default is `1`.
+- `limit`: Number of books per page. Default is `10`.
+- `sort_order`: Sorting order of the results. `1` for ascending and `-1` for descending. Default is `1`.
 
 ---
 
@@ -19,12 +19,12 @@ This endpoint allows users to retrieve a list of books within a specified price 
 <Tabs items={['HTTP', 'Curl', 'NodeJS', 'Python']} defaultIndex="1">
   <Tabs.Tab>
   ```http copy
-    GET /api/v1/books/price?min_price=10&max_price=50&page=2&limit=20&sort_order=1
+    localhost:3000/api/v1/books/price?min_price=10&max_price=50&page=2&limit=20&sort_order=1
   ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```curl copy
-    curl -X GET 'http://your-api-domain.com/api/v1/books/price?min_price=10&max_price=50&page=1&limit=10&sort_order=1'
+    curl -X GET 'localhost:3000/api/v1/books/price?min_price=10&max_price=50&page=1&limit=10&sort_order=1'
   ```
   </Tabs.Tab>
 
@@ -33,7 +33,7 @@ This endpoint allows users to retrieve a list of books within a specified price 
     ```js copy
     const axios = require('axios');
 
-    axios.get('http://your-api-domain.com/api/v1/books/price', {
+    axios.get('localhost:3000/api/v1/books/price', {
     params: {
         min_price: 10,
         max_price: 50,
@@ -56,7 +56,7 @@ This endpoint allows users to retrieve a list of books within a specified price 
     ```py copy
     import requests
 
-    url = 'https://colareseditora/api/v1/books/price'
+    url = 'localhost:3000/api/v1/books/price'
     params = {
         'min_price': 10,
         'max_price': 50,
