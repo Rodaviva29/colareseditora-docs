@@ -5,10 +5,13 @@ import { Tabs, Steps } from 'nextra/components'
 
 ### Description
 This endpoint allows developers to insert new books cart to the database by passing a cart object in the request.
-The cart object must containg the fields "total", for the total price in the cart, "volume", for the number of books in the cart, and "books", a list of books in the cart, each book is a book object with id.
+The cart object must contain the fields "total", for the total price in the cart, "volume", for the number of books in the cart, and "books", a list of books in the cart, each book is a book object with id.
 
-### Parameters
-No parameters required (and/or available).
+### Body (raw)
+A json object containing the following items.
+- `total`: Total price of the cart (float).
+- `volume`: Total amount of books in the cart(int).
+- `books`: List of the books in the cart. Each index is a book object containing its id.
 
 ---
 

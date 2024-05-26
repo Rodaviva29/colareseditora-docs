@@ -9,13 +9,17 @@ import { Tabs, Callout, Steps } from 'nextra/components'
 
 ### Description
 This endpoint allows developers to update a book already in the database.
-It's id can't be changed.
+The "id" and "_id" values cannot be replaced.
 
 ### Parameters
 
 There is only one parameter available and **it's required** to this endpoint return the correct response.
 
 - `id`: Book ID to select the book is going to be updated. (eg: 2)
+
+### Body (raw)
+A json object containing the information that will replace the existing book.
+It cannot contain "id" nor "_id" values.
 
 ---
 
