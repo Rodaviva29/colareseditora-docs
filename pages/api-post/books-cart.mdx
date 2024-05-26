@@ -1,1 +1,140 @@
+import { Tabs, Steps } from 'nextra/components'
+
+
 # `POST /api/v1/books/cart`
+
+### Description
+This endpoint allows developers to insert new books cart to the database by passing a cart object in the request.
+The cart object must containg the fields "total", for the total price in the cart, "volume", for the number of books in the cart, and "books", a list of books in the cart, each book is a book object with id.
+
+### Parameters
+No parameters required (and/or available).
+
+---
+
+### Request
+
+<Tabs items={['Curl', 'NodeJS', 'Python']} defaultIndex="1">
+    <Tabs.Tab>
+        ``` curl copy
+        curl -X POST -d "
+        {
+            "total": 150.75,
+            "volume": 3,
+            "books": [
+        {"id": 1},
+        {"id": 2},
+        {"id": 3}
+            ]
+        }
+        " 'localhost:5000/api/v1/books/cart'
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```js copy
+        const axios = require('axios');
+
+        axios.post('localhost:5000/api/v1/books/cart',
+        body: {
+        "total": 150.75,
+        "volume": 3,
+        "books": [
+    {"id": 1},
+    {"id": 2},
+    {"id": 3}
+        ]
+    }
+        })
+        .then((response) => {
+        console.log(response.data);
+        // Do something with the response.
+    })
+        .catch((error) => {
+        console.error(error);
+    });
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```py copy
+        import requests
+
+        url = 'localhost:5000/api/v1/books/cart'
+
+        cart_json = {
+        "total": 150.75,
+        "volume": 3,
+        "books": [
+    {"id": 1},
+    {"id": 2},
+    {"id": 3}
+        ]
+    }
+
+        try:
+        response = requests.post(url, json=cart_json)
+        data = response.json()
+        # Do something with the response.
+        except requests.exceptions.RequestException as e:
+        print('Error:', e)
+        ```
+    </Tabs.Tab>
+</Tabs>
+
+### Response
+
+The response will show if the books were **added successfully**.
+
+```json
+  {
+"status": "Success",
+"message": "Books added successfully"
+}
+```
+
+<Steps>
+
+    ### Bad Request (400)
+     If one of the required fields is missing
+    ```json
+    {"code": "400",
+        "status": "Bad Request",
+        "message": "The shopping cart must contain 'total , 'volume' and 'total'"}
+    ```
+
+    If the total value isn't numeric
+    ```json
+    {"code": "400",
+        "status": "Bad Request",
+        "message": "The total value must be numeric"}
+```
+
+If the volume value isn't an integer
+    ```json
+    {"code": "400",
+        "status": "Bad Request",
+        "message": "The number of books (volume) must be an integer"}
+```
+    If the value passed in the books field isn't a list
+```json
+    {"code": "400",
+        "status": "Bad Request",
+        "message": "The books in the cart must be in a list"}
+```
+
+If a book passed in the books list don't exists in the database
+    ```json
+    {"code": "400",
+        "status": "Bad Request",
+        "message": "The book with the id <id>, don't exists."}
+    ```
+
+    If a book passed in the books list don't have an id field
+
+    ```json
+    {"code": "400",
+        "status": "Bad Request",
+        "message": "Couldn't find the book's id"}
+```
+</Steps>
+
+
