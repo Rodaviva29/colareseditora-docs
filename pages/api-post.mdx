@@ -7,14 +7,22 @@ _The POST method is used to create new resources. For instance, if the manager o
 
 ---
 
-## JSON Payload - Practical Example
+## JSON Payload for Books - Practical Example
 
-The client sends a JSON payload with the parameters, which the server processes to make a specific action.
+The client sends a JSON payload with the parameters, which the server processes to make a specific action (like adding/editing a book document).
 
 ```python filename="post.py" copy
 data = request.get_json()
-param1 = data.get('param1')
-param2 = data.get('param2')
+```
+
+## Body (form-data) for Users - Practical Example
+
+The client sends a Body (form-data) with the values and keys, which the server processes to make a specific action.
+
+```python filename="post.py" copy
+    username = request.form.get("username")
+    password = request.form.get("password")
+
 ```
 
 ---

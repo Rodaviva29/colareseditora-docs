@@ -31,7 +31,7 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
   Token Authentication is required in some of: DELETE, PUT and POST methods.
 </Callout>
 
-```python filename="app.js" {1} copy showLineNumbers
+```python filename="app.js" {4} copy showLineNumbers
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -50,7 +50,17 @@ def token_required(f):
     return decorated
 ```
 
-Additionally, more information about token generation can be found in [login endpoint](/api-post/user-login).
+## Headers (token validation) - Practical Example
+
+The client sends a Header with the value ("token") and key (secret token previous generated during a sucessful Administrator login), which the server processes to allow certain actions.
+
+```python filename="post.py" copy
+
+    token = request.headers.get('token')
+
+```
+
+More information about token generation can be found in [login endpoint](/api-post/user-login).
 
 ---
 
