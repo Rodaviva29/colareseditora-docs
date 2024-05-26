@@ -138,7 +138,7 @@ No parameters required (and/or available).
 The response will show if the books were **added successfully**.
 
 ```json
-  {
+{
 "status": "Success",
 "message": "Books added successfully"
 }
@@ -161,45 +161,55 @@ The response will show if the books were **added successfully**.
     If the value passed in the body isn't a list.
 
     ```json
-    {"code": "400",
+    {
+        "code": "400",
         "status": "error",
-        "message": "A list of books is required"}
+        "message": "A list of books is required"
+    }
     ```
 
     If theres a field _id in one of the objects of the request.
 
     ```json
-    {"code": "400",
+    {
+        "code": "400",
         "status": "Bad Request",
         "message": "field '_id' is reserved",
-        "invalid book": "<Book object that caused the error>"}
+        "invalid book": "<Book object that caused the error>"
+    }
     ```
 
     If there isn't a field id in one of the objects of the request.
 
     ```json
-    {"code": "400",
+    {
+        "code": "400",
         "status": "Bad Request",
         "message": "id is required",
-        "invalid book": "<Book object that caused the error>"}
+        "invalid book": "<Book object that caused the error>"
+    }
     ```
 
     If there is already another book with the given id.
 
     ```json
-    {"code": "400",
+    {
+        "code": "400",
         "status": "Bad Request",
         "message": "id must be unique",
-        "invalid book": book_data}
+        "invalid book": "<Book object that caused the error>"
+    }
     ```
 
     If the id given isn't an integer.
 
     ```json
-    {"code": "400",
+    {
+        "code": "400",
         "status": "Bad Request",
         "message": "id must be numeric",
-        "invalid book": book_data})
+        "invalid book": "<Book object that caused the error>"
+    }
     ```
 
     ### Unauthorized (401)

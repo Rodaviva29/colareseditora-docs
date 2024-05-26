@@ -85,7 +85,7 @@ No parameters required (and/or available).
 The response will show if the books were **added successfully**.
 
 ```json
-  {
+{
 "status": "Success",
 "message": "Books added successfully"
 }
@@ -96,44 +96,56 @@ The response will show if the books were **added successfully**.
     ### Bad Request (400)
      If one of the required fields is missing
     ```json
-    {"code": "400",
+    {
+        "code": "400",
         "status": "Bad Request",
-        "message": "The shopping cart must contain 'total , 'volume' and 'total'"}
+        "message": "The shopping cart must contain 'total , 'volume' and 'total'"
+    }
     ```
 
     If the total value isn't numeric
     ```json
-    {"code": "400",
+    {
+        "code": "400",
         "status": "Bad Request",
-        "message": "The total value must be numeric"}
+        "message": "The total value must be numeric"
+    }
 ```
 
 If the volume value isn't an integer
     ```json
-    {"code": "400",
+    {
+        "code": "400",
         "status": "Bad Request",
-        "message": "The number of books (volume) must be an integer"}
+        "message": "The number of books (volume) must be an integer"
+    }
 ```
     If the value passed in the books field isn't a list
 ```json
-    {"code": "400",
+    {
+        "code": "400",
         "status": "Bad Request",
-        "message": "The books in the cart must be in a list"}
+        "message": "The books in the cart must be in a list"
+    }
 ```
 
 If a book passed in the books list don't exists in the database
     ```json
-    {"code": "400",
+    {
+        "code": "400",
         "status": "Bad Request",
-        "message": "The book with the id <id>, don't exists."}
+        "message": "The book with the id <id>, don't exists."
+    }
     ```
 
     If a book passed in the books list don't have an id field
 
     ```json
-    {"code": "400",
+    {
+        "code": "400",
         "status": "Bad Request",
-        "message": "Couldn't find the book's id"}
+        "message": "Couldn't find the book's id"
+    }
 ```
 </Steps>
 
