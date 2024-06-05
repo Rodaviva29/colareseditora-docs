@@ -2,6 +2,7 @@
     "books-allbooks": "/api/v1/books/allbooks",
     "books-total": "/api/v1/books/total",
     "books-featured": "/api/v1/books/featured",
+    "books-bestsellers": "/api/v1/books/bestsellers",
     "books-id": "/api/v1/books/id",
     "books": "/api/v1/books",
     "books-title": "/api/v1/books/title",
